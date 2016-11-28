@@ -3,7 +3,7 @@ package jj8.firebase_test;
 /**
  * Created by joelj on 11/27/2016.
  */
-//testy
+//test2
 
 import android.content.Intent;
 import android.os.Bundle;
