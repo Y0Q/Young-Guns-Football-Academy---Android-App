@@ -1,9 +1,9 @@
 package jj8.firebase_test;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,21 +13,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-
-
-public class MainActivity extends AppCompatActivity  implements
-        GoogleApiClient.OnConnectionFailedListener,View.OnClickListener  {
+public class MainActivity extends AppCompatActivity implements
+        GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private static final String TAG = "GoogleAuth";
-    private static final int RC_SIGN_IN = 9001 ;
+    private static final int RC_SIGN_IN = 9001;
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
 
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private String mUserId;
-
-
 
 
     @Override
@@ -37,9 +33,9 @@ public class MainActivity extends AppCompatActivity  implements
 
         // Initialize FirebaseAuth
         mFirebaseAuth = FirebaseAuth.getInstance();
-    // Initialize Firebase Auth and Database Reference
+        // Initialize Firebase Auth and Database Reference
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-       // mDatabase = FirebaseDatabase.getInstance().getReference();
+        // mDatabase = FirebaseDatabase.getInstance().getReference();
 
         if (mFirebaseUser == null) {
             // Not logged in, launch the Log In activity
@@ -53,7 +49,7 @@ public class MainActivity extends AppCompatActivity  implements
         Intent intent = new Intent(this, LogInActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-       startActivity(intent);
+        startActivity(intent);
     }
 
 

@@ -29,25 +29,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-
-
-
 public class LogInActivity extends AppCompatActivity implements
-        GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
+        GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private static final String TAG = "GoogleAuth";
     private static final int RC_SIGN_IN = 9000;
-    private GoogleApiClient mGoogleApiClient;
-    private TextView mStatusTextView;
-
-    private FirebaseAuth mFirebaseAuth;
-    private FirebaseUser mFirebaseUser;
-
     protected EditText emailEditText;
     protected EditText passwordEditText;
     protected Button logInButton;
     protected TextView signUpTextView;
-
+    private GoogleApiClient mGoogleApiClient;
+    private TextView mStatusTextView;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,6 +185,7 @@ public class LogInActivity extends AppCompatActivity implements
             updateUI(false);
         }
     }
+
     private void updateUI(boolean b) {
     }
 
