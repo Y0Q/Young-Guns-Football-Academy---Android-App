@@ -12,4 +12,13 @@
     tools:context="jj8.firebase_test.MainActivity">
 
 
+    <Button
+        android:text="@string/action_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/sign_out_button"/>
 </RelativeLayout>
