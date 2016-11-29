@@ -13,6 +13,8 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity implements
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private String mUserId;
-
+   // private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +41,14 @@ public class MainActivity extends AppCompatActivity implements
 
 
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        // mDatabase = FirebaseDatabase.getInstance().getReference();
+       //  mDatabase = FirebaseDatabase.getInstance().getReference();
 
         if (mFirebaseUser == null) {
             // Not logged in, launch the Log In activity
             loadLogInView();
         } else {
             mUserId = mFirebaseUser.getUid();
+            loadDataBaseView();
         }
 
         findViewById(R.id.sign_out_button).setOnClickListener(this);
@@ -55,6 +58,16 @@ public class MainActivity extends AppCompatActivity implements
         Intent intent = new Intent(this, LogInActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    private void loadDataBaseView() {
+        Intent intent = new Intent(this, RealtimeDataBase.class);
+
+        //Send mUserId to Database activity
+     //   intent.putExtra ("user_id", mUserId);
+      //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
