@@ -48,10 +48,12 @@ public class MainActivity extends AppCompatActivity implements
             loadLogInView();
         } else {
             mUserId = mFirebaseUser.getUid();
-            loadDataBaseView();
+
         }
 
         findViewById(R.id.sign_out_button).setOnClickListener(this);
+        findViewById(R.id.maps_button).setOnClickListener(this);
+        findViewById(R.id.Db_button).setOnClickListener(this);
     }
 
     private void loadLogInView() {
@@ -71,10 +73,15 @@ public class MainActivity extends AppCompatActivity implements
         startActivity(intent);
     }
 
+    private void loadMapsView() {
+        Intent intent = new Intent(this, MapsActivity.class);
 
-
-
-
+        //Send mUserId to Database activity
+        //   intent.putExtra ("user_id", mUserId);
+        //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 
     @Override
     public void onClick(View v) {
@@ -84,6 +91,15 @@ public class MainActivity extends AppCompatActivity implements
                 Toast.makeText(MainActivity.this, "Logout.",
                         Toast.LENGTH_SHORT).show();
                 signOut();
+                break;
+
+            case R.id.Db_button:
+                loadDataBaseView();
+                break;
+
+
+            case R.id.maps_button:
+                loadMapsView();
                 break;
             // ...
         }
