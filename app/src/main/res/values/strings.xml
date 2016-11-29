@@ -14,4 +14,9 @@
     <string name="title_activity_login">Sign in</string>
     <string name="add_item">Add New Item</string>
     <string name="action_logout">Logout</string>
+    <string name="db_button_text">DB</string>
+    <string name="gallery_button_text">Gallery</string>
+    <string name="cal_button_text">Calendar</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="maps_button_text">Map View</string>
 </resources>
