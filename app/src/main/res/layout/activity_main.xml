@@ -21,4 +21,41 @@
         android:layout_marginEnd="18dp"
         android:layout_marginBottom="20dp"
         android:id="@+id/sign_out_button"/>
+
+    <Button
+        android:text="@string/gallery_button_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gallery_button"
+        android:layout_alignBaseline="@+id/cal_button"
+        android:layout_alignBottom="@+id/cal_button"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:text="@string/cal_button_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cal_button"
+        android:layout_above="@+id/Db_button"
+        android:layout_alignStart="@+id/Db_button"
+        android:layout_marginBottom="43dp"/>
+
+    <Button
+        android:text="@string/db_button_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Db_button"
+        android:layout_above="@+id/sign_out_button"
+        android:layout_alignStart="@+id/sign_out_button"
+        android:layout_marginBottom="40dp"/>
+
+    <Button
+        android:text="@string/maps_button_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/maps_button"
+        android:layout_below="@+id/cal_button"
+        android:layout_alignEnd="@+id/gallery_button"
+        android:layout_marginEnd="19dp"
+        android:layout_marginTop="8dp"/>
 </RelativeLayout>
