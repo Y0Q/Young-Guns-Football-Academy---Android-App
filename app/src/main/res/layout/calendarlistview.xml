@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout -->
+              <!--android:orientation="vertical"-->
+              <!--android:layout_width="wrap_content"-->
+              <!--android:layout_height="wrap_content">-->
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCalendarDateId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:hint="@string/calendarDateDisp"
+            />
+        <TextView
+            android:id="@+id/tvCalendarDay"
+            android:layout_below="@id/tvCalendarDateId"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/tvCalendarDayDisp"/>
+        <TextView
+            android:id="@+id/tvCalendarEventId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tvCalendarDateId"
+            android:hint="@string/tvCalendarEventDisp"
+            android:padding="10dp"
+            />
+    </RelativeLayout>
+<!--</LinearLayout>-->
