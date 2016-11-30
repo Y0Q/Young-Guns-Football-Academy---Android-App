@@ -3,9 +3,10 @@ package jj8.firebase_test;
 /**
  * Created by joelj on 11/27/2016.
  */
-//test2
+//test5
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -49,6 +50,7 @@ public class LogInActivity extends AppCompatActivity implements
     // [START declare_auth_listener]
     private FirebaseAuth.AuthStateListener mAuthListener;
     // [END declare_auth_listener]
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +111,8 @@ public class LogInActivity extends AppCompatActivity implements
         });
 
 
+
+
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         mStatusTextView = (TextView) findViewById(R.id.text1);
 
@@ -154,7 +158,7 @@ public class LogInActivity extends AppCompatActivity implements
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
-    //    mGoogleApiClient.connect();
+
     }
 
     @Override
@@ -180,6 +184,14 @@ public class LogInActivity extends AppCompatActivity implements
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
+
+                GoogleSignInAccount acct = result.getSignInAccount();
+                //TO USE
+                String personName = acct.getDisplayName();
+                String personEmail = acct.getEmail();
+                String personId = acct.getId();
+                Uri personPhoto = acct.getPhotoUrl();
+                String personPhoneURL = acct.getPhotoUrl().toString();
             }
            // handleSignInResult(result);
         } else {
