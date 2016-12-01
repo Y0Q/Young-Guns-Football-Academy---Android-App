@@ -6,21 +6,19 @@
     <!--android:layout_height="match_parent">-->
 
 <!--</android.support.v7.widget.RecyclerView>-->
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_marginTop="0dp"
-        android:layout_height="194dp"
-        android:src="@drawable/footgo"
+        android:layout_height="259dp"
+        android:src="@drawable/matchpic"
         android:id="@+id/imageView"/>
 
     <android.support.v7.widget.RecyclerView
@@ -31,28 +29,4 @@
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
-
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/calendar_event_container">
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/events_tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabMode="fixed"
-            app:tabGravity="fill">
-
-        </android.support.design.widget.TabLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/calendar_pageractivity"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.v4.view.ViewPager>
-
 </RelativeLayout>

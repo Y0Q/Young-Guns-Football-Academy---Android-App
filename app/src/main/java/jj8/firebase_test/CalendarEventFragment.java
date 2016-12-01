@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -19,26 +18,10 @@ import java.util.List;
 // This fragment is instantiated by the Calendar Event Activity
 public class CalendarEventFragment extends Fragment {
 
-    private static final String ARG_TABSEL = "tabselect";
-    private int mTabSel;
     //
     private RecyclerView mCalEventRecyclerView;
     private CalEventAdapter mCalEventAdapter;
     private List<CalendarEventsDateTableParm> mCalendarEventsDateTableParms;
-
-    public static CalendarEventFragment newInstance (int tabSel) {
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_TABSEL, tabSel);
-        CalendarEventFragment fragment = new CalendarEventFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        mTabSel = (int) getArguments().getInt(ARG_TABSEL);
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +35,6 @@ public class CalendarEventFragment extends Fragment {
 
     private void updateUI()
     {
-        CalendarEventDate_Db mCalEventsDb = CalendarEventDate_Db.get();
         mCalendarEventsDateTableParms = CalendarEventDate_Db.get().getCalendarEvents();
         if(mCalEventAdapter == null)
         {
@@ -62,6 +44,7 @@ public class CalendarEventFragment extends Fragment {
         else
             mCalEventAdapter.notifyDataSetChanged();
     }
+
     private class CalEventAdapter extends RecyclerView.Adapter<CalEventHolder> {
         private List<CalendarEventsDateTableParm> mEvents;
 
@@ -105,15 +88,9 @@ public class CalendarEventFragment extends Fragment {
         }
 
         public void bindCalEvent(CalendarEventsDateTableParm event) {
-            Calendar c = Calendar.getInstance();
-            c.setTime(event.getDate());
             mDateTextView.setText(event.getDate().toString());
             mDayTextView.setText(event.getDay());
             mEventTextView.setText(event.getEventDetails());
-//            mDateTextView.setText(c.get(Calendar.DATE));
-//            mDayTextView.setText(c.get(Calendar.DAY_OF_WEEK));
-//            mEventTextView.setText(event.getEventDetails());
-
         }
     }
 }
