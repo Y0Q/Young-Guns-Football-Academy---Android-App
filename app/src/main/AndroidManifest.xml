@@ -56,6 +56,14 @@
         </activity>
 
 
+        <activity
+            android:name=".PhotoGallery">
+        </activity>
+
+        <activity
+            android:name=".DetailActivity">
+        </activity>
+
         <service
             android:name=".TokenService">
             <intent-filter>

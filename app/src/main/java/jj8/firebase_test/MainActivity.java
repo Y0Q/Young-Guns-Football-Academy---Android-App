@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.maps_button).setOnClickListener(this);
         findViewById(R.id.Db_button).setOnClickListener(this);
+        findViewById(R.id.gallery_button).setOnClickListener(this);
     }
 
     private void loadLogInView() {
@@ -72,6 +73,17 @@ public class MainActivity extends AppCompatActivity implements
         //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
+    private void loadGalleryView() {
+        Intent intent = new Intent(this, PhotoGallery.class);
+
+        //Send mUserId to Database activity
+        //   intent.putExtra ("user_id", mUserId);
+        //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
 
     private void loadMapsView() {
         Intent intent = new Intent(this, MapsActivity.class);
@@ -97,6 +109,9 @@ public class MainActivity extends AppCompatActivity implements
                 loadDataBaseView();
                 break;
 
+            case R.id.gallery_button:
+                loadGalleryView();
+                break;
 
             case R.id.maps_button:
                 loadMapsView();
@@ -104,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements
             // ...
         }
     }
+
 
     private void signOut() {
         mFirebaseAuth.signOut();
