@@ -1,5 +1,12 @@
 package jj8.firebase_test;
 
+/**
+ * Created by Chetan on 12/1/2016.
+ */
+
+//public class CalendarTrainingFragment {
+//}
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,15 +16,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Calendar;
 import java.util.List;
 
+//package jj8.firebase_test;
+
 /**
- * Created by Chetan on 11/29/2016.
+ * Created by Chetan on 11/30/2016.
  */
 
-// This fragment is instantiated by the Calendar Event Activity
-public class CalendarEventFragment extends Fragment {
+public class CalendarTrainingFragment extends Fragment {
+
+    // public class CalendarEventFragment extends Fragment {
 
     private static final String ARG_TABSEL = "tabselect";
     private int mTabSel;
@@ -26,10 +35,10 @@ public class CalendarEventFragment extends Fragment {
     private CalEventAdapter mCalEventAdapter;
     private List<CalendarEventsDateTableParm> mCalendarEventsDateTableParms;
 
-    public static CalendarEventFragment newInstance (int tabSel) {
+    public static CalendarTrainingFragment newInstance (int tabSel) {
         Bundle args = new Bundle();
         args.putSerializable(ARG_TABSEL, tabSel);
-        CalendarEventFragment fragment = new CalendarEventFragment();
+        CalendarTrainingFragment fragment = new CalendarTrainingFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,8 +51,8 @@ public class CalendarEventFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.calendar_event_container, container, false);
-        mCalEventRecyclerView = (RecyclerView) view.findViewById(R.id.calendar_event_container);
+        View view = inflater.inflate(R.layout.calendar_training_container, container, false);
+        mCalEventRecyclerView = (RecyclerView) view.findViewById(R.id.calendar_training_container);
         mCalEventRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
@@ -72,7 +81,7 @@ public class CalendarEventFragment extends Fragment {
         @Override
         public CalEventHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.calendarlistview, parent, false);
+            View view = layoutInflater.inflate(R.layout.traininglistview, parent, false);
 
             return new CalEventHolder(view);
         }
@@ -99,21 +108,15 @@ public class CalendarEventFragment extends Fragment {
         public CalEventHolder(View itemView) {
             super(itemView);
 
-            mDateTextView = (TextView) itemView.findViewById(R.id.tvCalendarDateId);
-            mDayTextView = (TextView) itemView.findViewById(R.id.tvCalendarDay);
-            mEventTextView = (TextView) itemView.findViewById(R.id.tvCalendarEventId);
+            mDateTextView = (TextView) itemView.findViewById(R.id.tvlstCalendarDateId);
+            mDayTextView = (TextView) itemView.findViewById(R.id.tvlstCalendarDay);
+            mEventTextView = (TextView) itemView.findViewById(R.id.tvlstCalendarEventId);
         }
 
         public void bindCalEvent(CalendarEventsDateTableParm event) {
-            Calendar c = Calendar.getInstance();
-            c.setTime(event.getDate());
             mDateTextView.setText(event.getDate().toString());
             mDayTextView.setText(event.getDay());
             mEventTextView.setText(event.getEventDetails());
-//            mDateTextView.setText(c.get(Calendar.DATE));
-//            mDayTextView.setText(c.get(Calendar.DAY_OF_WEEK));
-//            mEventTextView.setText(event.getEventDetails());
-
         }
     }
 }
