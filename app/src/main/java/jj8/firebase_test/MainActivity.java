@@ -91,6 +91,12 @@ public class MainActivity extends AppCompatActivity implements
         startActivity(intent);
     }
 
+    private void loadtabView() {
+        Intent intent = new Intent(this, ViewActivity.class);
+
+        startActivity(intent);
+    }
+
     private void loadCalView() {
         Intent intent = new Intent(this, CalendarViewPagerActivity.class);
 
@@ -102,13 +108,12 @@ public class MainActivity extends AppCompatActivity implements
         switch (v.getId()) {
 
             case R.id.sign_out_button:
-                Toast.makeText(MainActivity.this, "Logout.",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Logout.", Toast.LENGTH_SHORT).show();
                 signOut();
                 break;
 
             case R.id.Db_button:
-                loadDataBaseView();
+                loadtabView();
                 break;
 
             case R.id.gallery_button:
