@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:title="Chat"
+          android:id="@+id/nav_item_chat"
+          android:icon="@drawable/inbox"/>
+
+    <item android:title="myAccount"
+          android:id="@+id/nav_item_myAccount"
+          android:icon="@drawable/sent"/>
+
+    <item android:title="contactUs"
+          android:id="@+id/nav_item_contactUs"
+          android:icon="@drawable/draft"/>
+
+
+
+    <item android:title="Others">
+        <menu>
+            <item
+                android:title="aboutUs"
+                android:icon="@drawable/spam"/>
+            <item
+                android:title="events"
+                android:icon="@drawable/bin"/>
+        </menu>
+    </item>
+
+    <group android:id="@+id/group_settings_id">
+
+        <item android:title="feedback"
+              android:icon="@drawable/settings"/>
+        <item android:title="logout"
+             android:icon="@drawable/help"/>
+    </group>
+
+
+</menu>
