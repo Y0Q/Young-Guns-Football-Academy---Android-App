@@ -3,15 +3,25 @@
           package="jj8.firebase_test">
 
 
-
-
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera2.full" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
 
     <application
         android:allowBackup="true"
@@ -22,7 +32,29 @@
         android:enabled="true">
 
 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="android.jj8.firebase_test.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
 
+        <activity
+            android:name=".CalendarActivity"
+            android:label="Google Calendar API ANdroid Quickstart">
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+
+        <activity android:name=".CalendarViewPagerActivity">
+
+        </activity>
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -58,6 +90,12 @@
 
         <activity
             android:name=".PhotoGallery">
+        </activity>
+
+
+
+        <activity
+            android:name=".PhotoUpload">
         </activity>
 
         <activity

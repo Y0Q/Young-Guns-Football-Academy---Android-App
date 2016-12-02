@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements
         findViewById(R.id.maps_button).setOnClickListener(this);
         findViewById(R.id.Db_button).setOnClickListener(this);
         findViewById(R.id.gallery_button).setOnClickListener(this);
+        findViewById(R.id.cal_button).setOnClickListener(this);
+
     }
 
     private void loadLogInView() {
@@ -67,20 +69,12 @@ public class MainActivity extends AppCompatActivity implements
     private void loadDataBaseView() {
         Intent intent = new Intent(this, RealtimeDataBase.class);
 
-        //Send mUserId to Database activity
-     //   intent.putExtra ("user_id", mUserId);
-      //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
     private void loadGalleryView() {
-        Intent intent = new Intent(this, PhotoGallery.class);
+        Intent intent = new Intent(this, PhotoUpload.class);
 
-        //Send mUserId to Database activity
-        //   intent.putExtra ("user_id", mUserId);
-        //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
@@ -88,10 +82,18 @@ public class MainActivity extends AppCompatActivity implements
     private void loadMapsView() {
         Intent intent = new Intent(this, MapsActivity.class);
 
-        //Send mUserId to Database activity
-        //   intent.putExtra ("user_id", mUserId);
-        //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    private void loadUploadView() {
+        Intent intent = new Intent(this, PhotoUpload.class);
+
+        startActivity(intent);
+    }
+
+    private void loadCalView() {
+        Intent intent = new Intent(this, CalendarViewPagerActivity.class);
+
         startActivity(intent);
     }
 
@@ -115,6 +117,10 @@ public class MainActivity extends AppCompatActivity implements
 
             case R.id.maps_button:
                 loadMapsView();
+                break;
+
+            case R.id.cal_button:
+                loadCalView();
                 break;
             // ...
         }

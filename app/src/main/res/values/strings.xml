@@ -24,4 +24,7 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
+    <string name="calendarDateDisp">Date</string>
+    <string name="tvCalendarDayDisp">Day </string>
+    <string name="tvCalendarEventDisp">Event</string>
 </resources>
