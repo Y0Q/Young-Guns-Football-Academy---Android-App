@@ -63,24 +63,7 @@ public class PhotoUpload extends AppCompatActivity {
     private static ArrayList<String> urlList=new ArrayList<>();
 
 
-    public  boolean isStoragePermissionGranted() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG,"Permission is granted");
-                return true;
-            } else {
 
-                Log.v(TAG,"Permission is revoked");
-            //    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                return false;
-            }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG,"Permission is granted");
-            return true;
-        }
-    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,15 +72,15 @@ public class PhotoUpload extends AppCompatActivity {
         mProgressDialog = new ProgressDialog(this);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        DownloadUpdate();
 
-        isStoragePermissionGranted();
+
 
         Button click = (Button) findViewById(R.id.camera);
         click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View V) {
-                dispatchTakePictureIntent();
+                Intent i= new Intent(PhotoUpload.this, Camera.class);
+                startActivity(i);
 
             }
         });
@@ -108,6 +91,7 @@ public class PhotoUpload extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                 startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
+                DownloadUpdate();
             }
         });
 
@@ -123,47 +107,6 @@ public class PhotoUpload extends AppCompatActivity {
         mImageView = (ImageView) findViewById(R.id.imageView);
 
     }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
-            Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
-            //resume tasks needing this permission
-
-        }
-    }
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            try {
-                mfileURI = Uri.fromFile(createImageFile());
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-            }
-            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mfileURI);
-
-            startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-        }
-
-    }
-
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
-    }
-
 
 
     @Override
@@ -221,16 +164,7 @@ public class PhotoUpload extends AppCompatActivity {
 
     }
 
-    private String RealPathFromURI(Uri contentUri, Context context) {
-        String[] proj = { MediaStore.Images.Media.DATA };
-        CursorLoader loader = new CursorLoader(context, contentUri, proj, null, null, null);
-        Cursor cursor = loader.loadInBackground();
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        String result = cursor.getString(column_index);
-        cursor.close();
-        return result;
-    }
+
 
     public void DownloadUpdate() {
         mStorageReference = FirebaseStorage.getInstance().getReference();
