@@ -1,5 +1,6 @@
 package jj8.firebase_test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -10,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 /**
  * Created by Ratan on 7/27/2015.
@@ -64,7 +66,7 @@ public class ViewTabFragment extends Fragment {
         public Fragment getItem(int position)
         {
           switch (position){
-              case 0 : return new ViewTrainingFragment();
+              case 0 :return new ViewTrainingFragment();
               case 1 : return new ViewGalleryFragment();
               case 2 : return new ViewNotificationFragment();
           }

@@ -58,4 +58,28 @@
         android:layout_alignEnd="@+id/gallery_button"
         android:layout_marginEnd="19dp"
         android:layout_marginTop="8dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CAMERA"
+        android:id="@+id/camera"
+        android:layout_alignEnd="@+id/Db_button"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Gallery"
+        android:id="@+id/ViewGalleryButton"
+        android:layout_above="@+id/gallery_button"
+        android:layout_marginBottom="66dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gallery"
+        android:id="@+id/GalleryButton"
+        android:layout_above="@+id/ViewGalleryButton"
+        android:layout_alignParentStart="true"/>
+
 </RelativeLayout>

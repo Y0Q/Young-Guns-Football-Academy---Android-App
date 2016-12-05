@@ -1,5 +1,6 @@
 package jj8.firebase_test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,8 +16,9 @@ public class ViewGalleryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_view_gallery_layout,null);
+        return inflater.inflate(R.layout.activity_gallery,null);
     }
+
 
 
 }
