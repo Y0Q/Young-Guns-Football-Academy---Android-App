@@ -25,7 +25,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        String location = "google.navigation:q=Miller+Library,+Portland+Oregon";
+        String location = "google.navigation:q=Peter+Stott+Portland+Oregon";
 
         Uri gmmIntentUri = Uri.parse(location);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);

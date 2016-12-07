@@ -176,6 +176,11 @@ public class ViewActivity extends AppCompatActivity {
                         startActivity(ii);
                         break;
 
+                    case R.id.admin_console:
+                        Intent ii1 = new Intent(ViewActivity.this, RealtimeDataBase.class);
+                        startActivity(ii1);
+                        break;
+
 
 
                 }
