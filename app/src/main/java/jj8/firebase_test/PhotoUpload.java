@@ -48,7 +48,7 @@ import java.util.Set;
 
 public class PhotoUpload extends AppCompatActivity {
 
-    private static final String TAG = "Tag1" ;
+    private static final String TAG = "Tag1";
     ImageView mImageView;
     static final int REQUEST_TAKE_PHOTO = 1;
     final int ACTIVITY_SELECT_IMAGE = 3;
@@ -60,9 +60,7 @@ public class PhotoUpload extends AppCompatActivity {
 
     private FirebaseDatabase mData;
 
-    private static ArrayList<String> urlList=new ArrayList<>();
-
-
+    private static ArrayList<String> urlList = new ArrayList<>();
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,13 +71,11 @@ public class PhotoUpload extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
-
-
         Button click = (Button) findViewById(R.id.camera);
         click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View V) {
-                Intent i= new Intent(PhotoUpload.this, Camera.class);
+                Intent i = new Intent(PhotoUpload.this, Camera.class);
                 startActivity(i);
 
             }
@@ -91,7 +87,7 @@ public class PhotoUpload extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                 startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
-                DownloadUpdate();
+
             }
         });
 
@@ -99,15 +95,50 @@ public class PhotoUpload extends AppCompatActivity {
         galleryViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(PhotoUpload.this, PhotoGallery.class);
+                // DownloadUpdate();
+                Intent i = new Intent(PhotoUpload.this, PhotoGallery.class);
                 startActivity(i);
+
+
             }
         });
 
         mImageView = (ImageView) findViewById(R.id.imageView);
+        mStorageReference = FirebaseStorage.getInstance().getReference();
+        mData = FirebaseDatabase.getInstance();
+        mDatabase = mData.getReference();
 
+/*
+            mDatabase.child("photos").addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    urlList.add((String) dataSnapshot.getValue());
+
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                 //   urlList.add((String) dataSnapshot.getValue());
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                   // urlList.add((String) dataSnapshot.getValue());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+*/
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -143,7 +174,7 @@ public class PhotoUpload extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        if (requestCode == ACTIVITY_SELECT_IMAGE   && resultCode == RESULT_OK) {
+        if (requestCode == ACTIVITY_SELECT_IMAGE && resultCode == RESULT_OK) {
             mProgressDialog.setMessage("Uploading.....!");
             mProgressDialog.show();
             Uri uri = data.getData();
@@ -156,6 +187,7 @@ public class PhotoUpload extends AppCompatActivity {
                     mDatabase.child("photos").push().setValue(downloadurl);
                     Toast.makeText(PhotoUpload.this, "Upload done", Toast.LENGTH_LONG).show();
                     mProgressDialog.dismiss();
+
                 }
             });
 
@@ -166,11 +198,7 @@ public class PhotoUpload extends AppCompatActivity {
 
 
 
-    public void DownloadUpdate() {
-        mStorageReference = FirebaseStorage.getInstance().getReference();
-        mData = FirebaseDatabase.getInstance();
-        mDatabase = mData.getReference("photos");
-
+/*
        // My top posts by number of stars
         mDatabase.addListenerForSingleValueEvent (new ValueEventListener() {
             @Override
@@ -196,12 +224,11 @@ public class PhotoUpload extends AppCompatActivity {
         });
 
     }
-
-    public static ArrayList<String> getUrlList() {
-        return urlList;
-    }
-
-
+*/
+    //}
+  //  public static ArrayList<String> getUrlList () {
+//        return urlList;
+  //  }
 }
 
 

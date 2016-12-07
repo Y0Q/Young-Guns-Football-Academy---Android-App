@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentManager;
 
 abstract public class SingleFragmentActivity extends FragmentActivity {
 
-    // create an abstract protected class which creats the fragment
+    // create an abstract protected class which creates the fragment
     protected abstract Fragment createFragment();
 
     // define the onCreate method which will inflate the layout and the tasks

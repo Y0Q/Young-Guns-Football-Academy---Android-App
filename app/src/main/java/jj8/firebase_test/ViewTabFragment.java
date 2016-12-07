@@ -18,7 +18,7 @@ public class ViewTabFragment extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
-    public static int int_items = 3 ;
+    public static int int_items = 3;
 
     @Nullable
     @Override
@@ -26,26 +26,26 @@ public class ViewTabFragment extends Fragment {
 
         // Inflating activity_view_tab_layout and setup Views.
 
-            View x =  inflater.inflate(R.layout.activity_view_tab_layout,null);
-            tabLayout = (TabLayout) x.findViewById(R.id.tabs);
-            viewPager = (ViewPager) x.findViewById(R.id.viewpager);
+        View x = inflater.inflate(R.layout.activity_view_tab_layout, null);
+        tabLayout = (TabLayout) x.findViewById(R.id.tabs);
+        viewPager = (ViewPager) x.findViewById(R.id.viewpager);
 
 
         // Set an Adapter for the View Pager
 
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
-
+        tabLayout.setupWithViewPager(viewPager);
 
         //  workaround.
         //  The setupWithViewPager dose't work without the runnable .
 
 
-        tabLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                    tabLayout.setupWithViewPager(viewPager);
-                   }
-        });
+//        tabLayout.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                    tabLayout.setupWithViewPager(viewPager);
+//                   }
+//        });
 
         return x;
 
@@ -58,17 +58,17 @@ public class ViewTabFragment extends Fragment {
         }
 
 
-
-
         @Override
-        public Fragment getItem(int position)
-        {
-          switch (position){
-              case 0 : return new ViewTrainingFragment();
-              case 1 : return new ViewGalleryFragment();
-              case 2 : return new ViewNotificationFragment();
-          }
-        return null;
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return new ViewTrainingFragment();
+                case 1:
+                    return new ViewNotificationFragment();
+             //  case 2:
+
+            }
+            return null;
         }
 
         @Override
@@ -79,19 +79,18 @@ public class ViewTabFragment extends Fragment {
         }
 
 
-
         @Override
         public CharSequence getPageTitle(int position) {
 
-            switch (position){
-                case 0 :
+            switch (position) {
+                case 0:
                     return "Training";
-                case 1 :
+                case 1:
                     return "Gallery";
-                case 2 :
+                case 2:
                     return "Notification";
             }
-                return null;
+            return null;
         }
     }
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements
             loadLogInView();
         } else {
             mUserId = mFirebaseUser.getUid();
+            Intent i = new Intent(MainActivity.this, ViewActivity.class);
+            startActivity(i);
 
         }
 
@@ -57,7 +60,20 @@ public class MainActivity extends AppCompatActivity implements
         findViewById(R.id.gallery_button).setOnClickListener(this);
         findViewById(R.id.cal_button).setOnClickListener(this);
 
+        Button galleryViewButton = (Button) findViewById(R.id.ViewGalleryButton);
+        galleryViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, PhotoGallery.class);
+                startActivity(i);
+
+
+            }
+        });
+
     }
+
+
 
     private void loadLogInView() {
         Intent intent = new Intent(this, LogInActivity.class);
@@ -113,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements
                 break;
 
             case R.id.Db_button:
-                loadtabView();
+                loadDataBaseView();
                 break;
 
             case R.id.gallery_button:
