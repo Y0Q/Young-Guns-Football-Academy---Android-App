@@ -118,7 +118,7 @@ public class ViewActivity extends AppCompatActivity {
                     case 0:
                         return  new ViewTrainingFragment();
                     case 1:
-                      //  return new PhotoGallery();
+                       return new ViewGalleryFragment();
                     case 2:
                         return new ViewNotificationFragment();
                     default:

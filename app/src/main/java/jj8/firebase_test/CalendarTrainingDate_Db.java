@@ -12,15 +12,15 @@ import java.util.List;
  * the events can be accessed through the getEvents and getEvent
  */
 
-public class CalendarEventDate_Db {
-    private static CalendarEventDate_Db sCalEventDateDb;
-    private List<CalendarEventsDateTableParm> mCalendarEventsDateTableParms;
+public class CalendarTrainingDate_Db {
+    private static CalendarTrainingDate_Db sCalEventDateDb;
+    private List<CalendarEventsDateTableParm> mCalendarEventsDateTableParms;    // create an array of the events
 
     // create a singleton so that only one can instantiate this model
-    public static CalendarEventDate_Db get() {
+    public static CalendarTrainingDate_Db get() {
         if(sCalEventDateDb == null)
         {
-            sCalEventDateDb = new CalendarEventDate_Db();
+            sCalEventDateDb = new CalendarTrainingDate_Db();
         }
         return sCalEventDateDb;
     }
@@ -28,20 +28,17 @@ public class CalendarEventDate_Db {
     // private constructor
     // creat a database of all events in the calendar\
     // upload the database with the realtime information
-    private CalendarEventDate_Db () {
+    private CalendarTrainingDate_Db() {
         mCalendarEventsDateTableParms = new ArrayList<CalendarEventsDateTableParm>();
         // get size of the database
         // get the day
         // get the date
         // get the description
-
-        Event_DataBase eDb = new Event_DataBase();
-        for(int i = 0; i < eDb.getDatabaseTotalCnt(); i++)
+        for(int i = 0; i < 50; i++)
         {
             CalendarEventsDateTableParm mEvent = new CalendarEventsDateTableParm();
-            mEvent.setEventDetails(eDb.getDescription(i));
-            mEvent.setDay(eDb.getDay(i));
-            mEvent.setDate(eDb.getDate(i));
+            mEvent.setEventDetails("Event #: %" + (i + 1));
+            mEvent.setDay("Monday");
             mCalendarEventsDateTableParms.add(mEvent);
         }
     }

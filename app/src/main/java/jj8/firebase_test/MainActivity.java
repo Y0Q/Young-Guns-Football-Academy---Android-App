@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements
 
             case R.id.Db_button:
                 loadDataBaseView();
+               // loadeventDatabase();
                 break;
 
             case R.id.gallery_button:

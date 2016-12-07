@@ -66,7 +66,7 @@ public class RealtimeDataBase extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     String i = ((text.getText()).toString());
-                    mDatabase.child("test_branch").child("test_age_group").child("test_event").child("day").setValue(i);
+                    mDatabase.child("branch_1").child("age_group_10").child("event7").child("day").setValue(i);
                     text.setText("");
                 }
             });

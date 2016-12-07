@@ -2,21 +2,18 @@ package jj8.firebase_test;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * Created by joelj on 12/6/2016.
@@ -28,11 +25,17 @@ public class Event_DataBase extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
 
+    private ArrayList<DataSnapshot> lst = new ArrayList<>();  // store the reference to data in the database
+
+    // the followingn parameters will be used in getter methods
+    private ArrayList<String> mDate = new ArrayList<>();    // store the date from teh database
+    private ArrayList<String> mDay = new ArrayList<>();         // store the day from teh database
+    private ArrayList<String> mDescription = new ArrayList<>();     // store the descriptoin from the database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_database);
+        //setContentView(R.layout.activity_event_database);
 
         // Initialize Firebase Auth and Database Reference
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -40,40 +43,41 @@ public class Event_DataBase extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mUserId = mFirebaseUser.getUid();
 
+        final TextView textView = (TextView) findViewById(R.id.event_database_textview);
 
-
-
-        final TextView textView = (TextView)findViewById(R.id.event_database_textview);
-     //   textView.setText("yo");
-
-        // Use Firebase to populate the list.
-        mDatabase.child("branch_1").child("age_group_10").addChildEventListener(new ChildEventListener() {
-        //    mDatabase.child("users").child(mUserId).child("items").addChildEventListener(new ChildEventListener() {
-
-       // mDatabase.child("photos").addChildEventListener(new ChildEventListener() {
+        // create a getter method which will give the events details
+        mDatabase.child("branch_1").child("age_group_10").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-               // adapter.add((String) dataSnapshot.child("date").getValue());
-               // adapter.add((String) dataSnapshot.child("training").child("day").getValue());
-                 String temp = ((String)dataSnapshot.child("date").getValue());
-                 textView.setText(temp);
-            }
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-              //  String temp = ((String)dataSnapshot.child("training").child("day").getValue());
-              //  textView.setText(temp);
-            }
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                    lst.add(dsp);
+                }
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : lst) {
+//                    textView.setText(data);
+                    //Toast.makeText(Event_DataBase.this, ((String)data.child("date").getValue()), Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(Event_DataBase.this, (String)data.child("day").getValue(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Event_DataBase.this, (String)data.child("description").getValue(), Toast.LENGTH_LONG).show();
+                  //  System.out.println(data.child("date").getValue().toString());
+                    mDate.add((String)data.child("date").getValue());
+                    //mDate.add("yo");
+                  //  mDay.add((data.child("day").getValue()).toString());
 
-            }
+                  //  mDescription.add((data.child("description").getValue()).toString());
+                }
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-               // String temp = ((String)dataSnapshot.child("training").child("day").getValue());
-               // textView.setText(temp);
+
+//                for(char cnt = 0; cnt < lst.size(); cnt++) {
+//                    textView.setText(lst);
+//                }
+
+//                DataSnapshot dsp = (DataSnapshot) dataSnapshot.getChildren();   // get the starting point of the events
+////                String temp = ((String)dataSnapshot.getChildren().("training").child("date").getValue());
+//
+//                String temp = (String) dsp.getKey().toString();
+//                textView.setText(temp);
+
             }
 
             @Override
@@ -81,23 +85,27 @@ public class Event_DataBase extends AppCompatActivity {
 
             }
         });
-
-
-/*
-        mDatabase.child("branch_1").child("age_group_10")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        String temp = ((String)dataSnapshot.getValue());
-                        textView.setText(temp);
-                        }
-
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-        */
     }
+
+
+    // This method will return the total number of entries in teh database
+    public int getDatabaseTotalCnt() {
+        return lst.size();
+    }
+
+    // return the date description
+    public String getDate(int position) {
+        return mDate.get(position);
+    }
+
+    // return the day description
+    public String getDay (int position) {
+        return mDay.get(position);
+    }
+
+    // return the description mentioned in the database
+    public String getDescription (int position) {
+        return mDescription.get(position);
+    }
+
 }

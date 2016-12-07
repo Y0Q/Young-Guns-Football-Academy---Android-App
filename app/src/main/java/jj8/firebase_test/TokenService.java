@@ -12,12 +12,20 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.ArrayList;
+
 /**
  * Created by joelj on 11/16/2016.
  */
 
 public class TokenService extends FirebaseMessagingService {
     private static final String TAG = "FCM Service";
+
+    static ArrayList<String> mTitle = new ArrayList<>();
+    static ArrayList<String> mBody = new ArrayList<>();
+
+   // static String mTitle;
+    //static String mBody;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -37,10 +45,20 @@ public class TokenService extends FirebaseMessagingService {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
 
+        mTitle.add(remoteMessage.getNotification().getTitle());
+        mBody.add(remoteMessage.getNotification().getBody());
         sendNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
+    }
+
+    public static ArrayList<String> getNotificationTitle() {
+        return  mTitle;
+    }
+
+    public static ArrayList<String> getNotificationBody() {
+        return  mBody;
     }
 
     //This method is only generating push notification
@@ -52,7 +70,7 @@ public class TokenService extends FirebaseMessagingService {
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.icon)
                 .setContentTitle(title)
                 .setContentText(messageBody)
                 .setAutoCancel(true)

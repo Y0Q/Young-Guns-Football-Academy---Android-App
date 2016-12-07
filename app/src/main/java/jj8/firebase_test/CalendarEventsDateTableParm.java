@@ -1,21 +1,21 @@
 package jj8.firebase_test;
 
-import java.util.Date;
-
 /**
  * Created by Chetan on 11/29/2016.
  */
 
 public class CalendarEventsDateTableParm {
-    private Date mDate;
-    private String mDay;
-    private String mEventDetails;
+    public String mDate;
+    public String mDay;
+    public String mEventDetails;
 
     public CalendarEventsDateTableParm() {
-        mDate = new Date();
+        mDate = "";
+        mDay = "";
+        mEventDetails = "";
     }
 
-//    public void setDate(Date date) {
+    //    public void setDate(Date date) {
 //
 //        mDate = date;
 //    }
@@ -24,11 +24,15 @@ public class CalendarEventsDateTableParm {
         mDay = day;
     }
 
+    public void setDate(String date) {
+        mDate = date;
+    }
+
     public void setEventDetails(String eventDetails) {
         mEventDetails = eventDetails;
     }
 
-    public Date getDate() {
+    public String getDate() {
 
         return mDate;
     }
