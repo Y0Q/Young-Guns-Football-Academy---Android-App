@@ -71,7 +71,7 @@ dependencies {
     compile('com.google.apis:google-api-services-calendar:v3-rev225-1.22.0') {
         exclude group: 'org.apache.httpcomponents'
     }
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+
 }
 
 repositories {

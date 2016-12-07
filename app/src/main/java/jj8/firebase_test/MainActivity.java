@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements
                 break;
 
             case R.id.Db_button:
-                loadeventDatabase();
+                loadDataBaseView();
                 break;
 
             case R.id.gallery_button:
