@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements
             loadLogInView();
         } else {
             mUserId = mFirebaseUser.getUid();
+            Intent i = new Intent(MainActivity.this, ViewActivity.class);
+            startActivity(i);
 
         }
 

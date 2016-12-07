@@ -71,7 +71,6 @@ public class PhotoUpload extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
-
         Button click = (Button) findViewById(R.id.camera);
         click.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +95,7 @@ public class PhotoUpload extends AppCompatActivity {
         galleryViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // DownloadUpdate();
+                // DownloadUpdate();
                 Intent i = new Intent(PhotoUpload.this, PhotoGallery.class);
                 startActivity(i);
 
@@ -109,34 +108,37 @@ public class PhotoUpload extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance();
         mDatabase = mData.getReference();
 
-        mDatabase.child("photos").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                urlList.add((String) dataSnapshot.getValue());
-            }
+/*
+            mDatabase.child("photos").addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    urlList.add((String) dataSnapshot.getValue());
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                }
 
-            }
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                 //   urlList.add((String) dataSnapshot.getValue());
+                }
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-            }
+                }
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                   // urlList.add((String) dataSnapshot.getValue());
+                }
 
-            }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                }
+            });
 
-            }
-        });
+*/
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -195,37 +197,7 @@ public class PhotoUpload extends AppCompatActivity {
     }
 
 
-    public void DownloadUpdate() {
-        mStorageReference = FirebaseStorage.getInstance().getReference();
-        mData = FirebaseDatabase.getInstance();
-        mDatabase = mData.getReference();
 
-        mDatabase.child("photos").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                urlList.add((String) dataSnapshot.getValue());
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 /*
        // My top posts by number of stars
         mDatabase.addListenerForSingleValueEvent (new ValueEventListener() {
@@ -253,10 +225,10 @@ public class PhotoUpload extends AppCompatActivity {
 
     }
 */
-    }
-    public static ArrayList<String> getUrlList () {
-        return urlList;
-    }
+    //}
+  //  public static ArrayList<String> getUrlList () {
+//        return urlList;
+  //  }
 }
 
 
