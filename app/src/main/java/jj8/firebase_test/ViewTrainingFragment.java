@@ -121,6 +121,7 @@ public class ViewTrainingFragment extends Fragment {
             // currently the only one location is hardcoded in the database
             // but later in the near future the locations will be updated
             Intent intent = new Intent(getActivity(), MapsActivity.class);
+
             startActivity(intent);
         }
     }
