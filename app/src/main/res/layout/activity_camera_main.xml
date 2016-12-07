@@ -8,12 +8,7 @@
               android:padding="16dp"
               tools:context="jj8.firebase_test.Camera">
 
-    <Button
-        android:id="@+id/btnTakePhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Take a Photo" />
+
 
     <ImageView
         android:id="@+id/ivPreview"
