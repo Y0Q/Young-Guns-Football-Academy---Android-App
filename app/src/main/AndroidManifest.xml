@@ -99,6 +99,10 @@
             android:name=".PhotoUpload">
         </activity>
 
+        <activity
+            android:name=".Event_DataBase">
+        </activity>
+
 
         <activity
             android:name=".Camera">

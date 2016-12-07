@@ -119,6 +119,12 @@ public class MainActivity extends AppCompatActivity implements
         startActivity(intent);
     }
 
+    private void loadeventDatabase() {
+        Intent intent = new Intent(this, Event_DataBase.class);
+
+        startActivity(intent);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -129,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements
                 break;
 
             case R.id.Db_button:
-                loadDataBaseView();
+                loadeventDatabase();
                 break;
 
             case R.id.gallery_button:
