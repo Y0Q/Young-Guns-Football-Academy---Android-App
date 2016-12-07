@@ -108,8 +108,8 @@ public class ViewActivity extends AppCompatActivity {
         // inspite of the repeated name of tabs in different layout the currently inflated layout is monitored
         mTabsViewPager = (ViewPager) findViewById(R.id.main_actv_pager);
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        mTabLayout.addTab(mTabLayout.newTab().setText("TRAINING"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("GALLERY"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("ABOUT US"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("METADATA"));
         mTabLayout.addTab(mTabLayout.newTab().setText("TOURNAMENTS"));
         mTabsViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -134,9 +134,9 @@ public class ViewActivity extends AppCompatActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        return  new ViewNotificationFragment();
+                        return  new ViewmyAccountFragment();
                     case 1:
-                        //  return new PhotoGallery();
+                        return new ViewNotificationFragment();
                     case 2:
                         return new ViewTrainingFragment();
                     default:

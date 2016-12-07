@@ -32,8 +32,8 @@ public class ViewNotificationFragment extends Fragment {
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,android.R.id.text1);
         listView.setAdapter(adapter);
 
-      //  adapter.add("yo");
-       // adapter.add("bro");
+        adapter.add("TEST");
+        adapter.add("NOT A TEST");
         adapter.addAll(Body);
        // adapter.addAll(Title);
         return v;
