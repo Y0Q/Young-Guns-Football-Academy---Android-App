@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_aboutuss"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jj8.firebase_test.aboutuss">
+
+    <ImageView
+        android:id="@+id/View1image"
+        android:layout_width="match_parent"
+        android:layout_height="194dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/footgo"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About US"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/View1image"
+        android:id="@+id/view1text"
+        android:layout_centerHorizontal="true"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view2text"
+        android:text="
+        Hi we are Young Guns FA. The team engineers are Chetan Bornarkar, Joel Jacob, Arjun Sridhar and Kaustub Agashe.The App we planned to implement is for an existing Football training institute situated in Mumbai, India.
+        The app would provide the user the ability to obtain information regarding the on-going and upcoming activities of the Institute.It basically keeps the user updated with all the events, sessions and the matches."
+        android:layout_below="@+id/view1text"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:textAllCaps="false"/>
+</RelativeLayout>

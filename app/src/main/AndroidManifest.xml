@@ -103,6 +103,15 @@
             android:name=".Event_DataBase">
         </activity>
 
+        <activity
+            android:name=".Myacc">
+        </activity>
+        <activity
+            android:name=".aboutuss">
+        </activity>
+        <activity
+            android:name=".contactus">
+        </activity>
 
         <activity
             android:name=".Camera">

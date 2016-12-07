@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by joelj on 12/6/2016.
@@ -46,21 +47,22 @@ public class Event_DataBase extends AppCompatActivity {
      //   textView.setText("yo");
 
         // Use Firebase to populate the list.
-       // mDatabase.child("branch_1").child("age_group_10").addChildEventListener(new ChildEventListener() {
-            mDatabase.child("users").child(mUserId).child("items").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("branch_1").child("age_group_10").addChildEventListener(new ChildEventListener() {
+        //    mDatabase.child("users").child(mUserId).child("items").addChildEventListener(new ChildEventListener() {
 
        // mDatabase.child("photos").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                // adapter.add((String) dataSnapshot.child("date").getValue());
                // adapter.add((String) dataSnapshot.child("training").child("day").getValue());
-                String temp = ((String)dataSnapshot.child("title").getValue());
+                 String temp = ((String)dataSnapshot.child("date").getValue());
                  textView.setText(temp);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
+              //  String temp = ((String)dataSnapshot.child("training").child("day").getValue());
+              //  textView.setText(temp);
             }
 
             @Override
@@ -70,7 +72,8 @@ public class Event_DataBase extends AppCompatActivity {
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+               // String temp = ((String)dataSnapshot.child("training").child("day").getValue());
+               // textView.setText(temp);
             }
 
             @Override
@@ -78,5 +81,23 @@ public class Event_DataBase extends AppCompatActivity {
 
             }
         });
+
+
+/*
+        mDatabase.child("branch_1").child("age_group_10")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String temp = ((String)dataSnapshot.getValue());
+                        textView.setText(temp);
+                        }
+
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+        */
     }
 }

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_abtus"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jj8.firebase_test.contactus">
+
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="194dp"
+        android:src="@drawable/footgo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact US"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/imageView1"
+        android:id="@+id/textview1"
+        android:layout_centerHorizontal="true"
+        android:textStyle="normal|bold"/>
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cr71"
+        android:layout_width="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/imageView1"
+        android:layout_alignParentStart="true"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/messi1"
+        android:layout_below="@+id/textview2"
+        android:layout_toStartOf="@+id/textview2"
+        android:layout_alignEnd="@+id/imageView2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="
+        Name:Ronaldo \n
+        Email id:ronaldo@youngGunsFc.com\n
+        Phone: 425-111-000\n"
+        android:id="@+id/textview2"
+        android:layout_marginTop="80dp"
+        android:layout_below="@+id/textview1"
+        android:layout_toEndOf="@+id/imageView2"
+        android:textStyle="normal|bold"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="
+        Name:Messi\n
+        Email id:messi@youngGunsFc.com\n
+        Phone: 425-222-000\n"
+        android:id="@+id/textview3"
+        android:textStyle="normal|bold"
+        android:layout_marginBottom="28dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/imageView2"/>
+
+</RelativeLayout>

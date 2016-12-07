@@ -158,9 +158,25 @@ public class ViewActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     }
-                    case R.id.nav_item_chat: break;
-                    case R.id.nav_item_contactUs: break;
-                    case R.id.nav_item_myAccount: break;
+                    case R.id.nav_item_chat:
+
+                        break;
+
+                    case R.id.nav_item_contactUs:
+                        Intent intent = new Intent(ViewActivity.this, contactus.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_item_myAccount:
+                        Intent i = new Intent(ViewActivity.this, Myacc.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.nav_item_aboutUs:
+                        Intent ii = new Intent(ViewActivity.this, aboutuss.class);
+                        startActivity(ii);
+                        break;
+
+
 
                 }
 
