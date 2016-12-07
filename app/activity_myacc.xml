@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_myacc"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jj8.firebase_test.Myacc">
+
+
+    <ImageView
+        android:id="@+id/viewImage1"
+        android:layout_width="match_parent"
+        android:layout_height="194dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/footgo"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Profile"
+        android:id="@+id/viewtext1"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/viewImage1"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/viewImage2"
+        android:layout_width="111dp"
+        android:src="@drawable/pro1"
+
+        android:layout_height="111dp"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/viewtext2"
+        android:layout_alignStart="@+id/viewtext1"/>
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="
+    Name:Young Gun
+    Age: 12 years
+    Email id:User@youngGunsFc.com
+    Phone: 425-222-123"
+    android:id="@+id/viewtext2"
+    android:layout_marginBottom="22dp"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginEnd="42dp"/>
+</RelativeLayout>
