@@ -91,6 +91,9 @@
             android:name=".PhotoGallery">
         </activity>
 
+        <activity android:name=".SelectorActivity">
+
+        </activity>
         <activity
             android:name=".ViewActivity">
         </activity>

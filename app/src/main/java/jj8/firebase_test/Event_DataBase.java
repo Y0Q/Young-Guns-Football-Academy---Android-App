@@ -25,7 +25,7 @@ public class Event_DataBase extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
 
-    private ArrayList<DataSnapshot> lst = new ArrayList<>();  // store the reference to data in the database
+    private ArrayList<DataSnapshot> lst = new ArrayList<>();;   // store the reference to data in the database
 
     // the followingn parameters will be used in getter methods
     private ArrayList<String> mDate = new ArrayList<>();    // store the date from teh database
@@ -38,6 +38,10 @@ public class Event_DataBase extends AppCompatActivity {
         //setContentView(R.layout.activity_event_database);
 
         // Initialize Firebase Auth and Database Reference
+        Init_DatabaseActvty();
+    }
+
+    private void Init_DatabaseActvty() {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -56,15 +60,15 @@ public class Event_DataBase extends AppCompatActivity {
 
                 for (DataSnapshot data : lst) {
 //                    textView.setText(data);
-                    //Toast.makeText(Event_DataBase.this, ((String)data.child("date").getValue()), Toast.LENGTH_LONG).show();
-                  //  Toast.makeText(Event_DataBase.this, (String)data.child("day").getValue(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Event_DataBase.this, (String)data.child("date").getValue(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Event_DataBase.this, (String)data.child("day").getValue(), Toast.LENGTH_LONG).show();
                     Toast.makeText(Event_DataBase.this, (String)data.child("description").getValue(), Toast.LENGTH_LONG).show();
-                  //  System.out.println(data.child("date").getValue().toString());
-                    mDate.add((String)data.child("date").getValue());
-                    //mDate.add("yo");
-                  //  mDay.add((data.child("day").getValue()).toString());
+//                    System.out.println(data.child("date").getValue().toString());
+                    mDate.add((String)(data.child("date").getValue()));
+//                    mDate.add("yo");
+                    mDay.add((String)(data.child("day").getValue()));
 
-                  //  mDescription.add((data.child("description").getValue()).toString());
+                    mDescription.add((String)(data.child("description").getValue()));
                 }
 
 

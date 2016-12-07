@@ -56,9 +56,15 @@ public class ViewTrainingFragment extends Fragment {
         return view;
     }
 
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        updateUI();
+//    }
+
     private void updateUI() {
         CalendarEventDate_Db mCalEventsDb = CalendarEventDate_Db.get();
-        mCalendarEventsDateTableParms = CalendarEventDate_Db.get().getCalendarEvents();
+        mCalendarEventsDateTableParms = CalendarEventDate_Db.get().getCalendarEvents(); // get the total list of events
         if (mCalEventAdapter == null) {
             mCalEventAdapter = new TCalEventAdapter(mCalendarEventsDateTableParms);
             mCalEventRecyclerView.setAdapter(mCalEventAdapter);
@@ -109,7 +115,7 @@ public class ViewTrainingFragment extends Fragment {
         }
 
         public void bindCalEvent(CalendarEventsDateTableParm event) {
-            mDateTextView.setText(event.getDate().toString());
+            mDateTextView.setText(event.getDate());
             mDayTextView.setText(event.getDay());
             mEventTextView.setText(event.getEventDetails());
         }
@@ -121,7 +127,6 @@ public class ViewTrainingFragment extends Fragment {
             // currently the only one location is hardcoded in the database
             // but later in the near future the locations will be updated
             Intent intent = new Intent(getActivity(), MapsActivity.class);
-
             startActivity(intent);
         }
     }
