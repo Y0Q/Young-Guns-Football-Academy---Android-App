@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FireBase_test</string>
+    <string name="app_name">YGFA</string>
     <string name="signed_in_fmt">test</string>
     <string name="password_hint">Password</string>
     <string name="email_hint">Email</string>
