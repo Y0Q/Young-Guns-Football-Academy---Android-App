@@ -63,13 +63,13 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+      //  switch (v.getId()) {
 
-            case R.id.btnTakePhoto:
-                startCamera();
-                break;
+          //  case R.id.btnTakePhoto:
+            //    startCamera();
+             //   break;
 
-        }}
+        }
     ////////////
     // Camera //
     ////////////

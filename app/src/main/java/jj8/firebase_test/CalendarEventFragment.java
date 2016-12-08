@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -105,8 +104,8 @@ public class CalendarEventFragment extends Fragment {
         }
 
         public void bindCalEvent(CalendarEventsDateTableParm event) {
-            Calendar c = Calendar.getInstance();
-            c.setTime(event.getDate());
+//            Calendar c = Calendar.getInstance();
+//            c.setTime(event.getDate().toString());
             mDateTextView.setText(event.getDate().toString());
             mDayTextView.setText(event.getDay());
             mEventTextView.setText(event.getEventDetails());

@@ -50,15 +50,17 @@ public class MainActivity extends AppCompatActivity implements
         } else {
             mUserId = mFirebaseUser.getUid();
             Intent i = new Intent(MainActivity.this, ViewActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
 
         }
 
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
-        findViewById(R.id.maps_button).setOnClickListener(this);
-        findViewById(R.id.Db_button).setOnClickListener(this);
-        findViewById(R.id.gallery_button).setOnClickListener(this);
-        findViewById(R.id.cal_button).setOnClickListener(this);
+     //   findViewById(R.id.sign_out_button).setOnClickListener(this);
+   //     findViewById(R.id.maps_button).setOnClickListener(this);
+    //    findViewById(R.id.Db_button).setOnClickListener(this);
+   //     findViewById(R.id.gallery_button).setOnClickListener(this);
+    //    findViewById(R.id.cal_button).setOnClickListener(this);
 
         Button galleryViewButton = (Button) findViewById(R.id.ViewGalleryButton);
         galleryViewButton.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +121,12 @@ public class MainActivity extends AppCompatActivity implements
         startActivity(intent);
     }
 
+    private void loadeventDatabase() {
+        Intent intent = new Intent(this, Event_DataBase.class);
+
+        startActivity(intent);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -130,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements
 
             case R.id.Db_button:
                 loadDataBaseView();
+               // loadeventDatabase();
                 break;
 
             case R.id.gallery_button:
