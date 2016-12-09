@@ -1,7 +1,10 @@
 package jj8.firebase_test;
 
 /**
- * Created by joelj on 11/30/2016.
+ * https://github.com/Suleiman19/Gallery
+ * Modified by Joel Jacob on 11/30/2016.
+ *
+ * Implementation of the Photo Gallery that updates in realtime via the Database
  */
 
 
@@ -22,17 +25,9 @@ public class PhotoGallery extends AppCompatActivity {
 
     ArrayList<ImageModel> data = new ArrayList<>();
 
+    //This array contains the URL's of the photos that are to be displayed
     ArrayList<String> IMGS = ViewActivity.getUrlList();
 
-
-
-  /*  public static String IMGS[] = {
-            "https://images.unsplash.com/photo-1444090542259-0af8fa96557e?q=80&fm=jpg&w=1080&fit=max&s=4b703b77b42e067f949d14581f35019b",
-            "https://images.unsplash.com/photo-1439546743462-802cabef8e97?dpr=2&fit=crop&fm=jpg&h=725&q=50&w=1300",
-            "gs://fir-test-efddc.appspot.com/photos/",
-            "https://images.unsplash.com/photo-1438027316524-6078d503224b?dpr=2&fit=crop&fm=jpg&h=725&q=50&w=1300"
-    };
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +45,8 @@ public class PhotoGallery extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Call recycler view to display images on a grid
+
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         mRecyclerView.setHasFixedSize(true);
@@ -61,6 +58,7 @@ public class PhotoGallery extends AppCompatActivity {
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this,
                 new RecyclerItemClickListener.OnItemClickListener() {
 
+                    //if the user clicks on an image, it opens up the image in a detailed activity.
                     @Override
                     public void onItemClick(View view, int position) {
 

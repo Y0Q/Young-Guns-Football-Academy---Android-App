@@ -1,11 +1,14 @@
 package jj8.firebase_test;
 
 /**
- * Created by joelj on 11/30/2016.
+ * 	https://github.com/Suleiman19/Gallery
  */
 
 import android.support.v4.view.ViewPager;
 import android.view.View;
+
+
+//This class implements the Photo gallery Detail View Fade animation
 
 public class DepthPageTransformer implements ViewPager.PageTransformer {
     private static final float MIN_SCALE = 0.75f;

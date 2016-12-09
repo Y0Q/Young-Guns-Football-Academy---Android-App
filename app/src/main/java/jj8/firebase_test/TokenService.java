@@ -15,7 +15,9 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.ArrayList;
 
 /**
- * Created by joelj on 11/16/2016.
+ * Created by Joel Jacob  on 11/16/2016.
+ *
+ * Manage notifications and customise the notification experience for app users
  */
 
 public class TokenService extends FirebaseMessagingService {
@@ -27,6 +29,7 @@ public class TokenService extends FirebaseMessagingService {
    // static String mTitle;
     //static String mBody;
 
+    //Get the notification title and body and create the message
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // ...
@@ -61,7 +64,8 @@ public class TokenService extends FirebaseMessagingService {
         return  mBody;
     }
 
-    //This method is only generating push notification
+    //This method generates a push notification
+
     private void sendNotification(String title, String messageBody) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

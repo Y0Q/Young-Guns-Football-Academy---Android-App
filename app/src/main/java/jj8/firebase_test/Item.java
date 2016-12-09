@@ -1,11 +1,11 @@
 package jj8.firebase_test;
 
-/**
- * Created by joelj on 11/28/2016.
- */
 
 /**
  * Created by echessa on 8/27/16.
+ * Modified by Joel Jacob
+ *
+ * This code is no longer in use
  */
 public class Item {
 

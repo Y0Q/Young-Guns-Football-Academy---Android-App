@@ -1,7 +1,7 @@
 package jj8.firebase_test;
 
 /**
- * Created by joelj on 11/30/2016.
+ * https://github.com/Suleiman19/Gallery
  */
 
 import android.os.Bundle;
@@ -21,6 +21,10 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+
+
+//This class implements the detailed view if the user clicks on an image in the photo gallery
+
 
 public class DetailActivity extends AppCompatActivity {
 

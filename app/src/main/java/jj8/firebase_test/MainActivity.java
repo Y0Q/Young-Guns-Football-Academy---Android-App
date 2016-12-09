@@ -1,22 +1,28 @@
 package jj8.firebase_test;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.support.annotation.NonNull;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
+        import com.google.android.gms.auth.api.Auth;
+        import com.google.android.gms.common.ConnectionResult;
+        import com.google.android.gms.common.api.GoogleApiClient;
+        import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.auth.FirebaseUser;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
+
+//Created by Joel Jacob
+//Was used to test all app features previously,
+//Now this activity checks if user has logged in,if they have it will open up ViewActivity
+//which contains the tabbed activity view.
+//
 
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
@@ -29,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private String mUserId;
-   // private DatabaseReference mDatabase;
+    // private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-       //  mDatabase = FirebaseDatabase.getInstance().getReference();
+        //  mDatabase = FirebaseDatabase.getInstance().getReference();
 
         if (mFirebaseUser == null) {
             // Not logged in, launch the Log In activity
@@ -56,11 +62,11 @@ public class MainActivity extends AppCompatActivity implements
 
         }
 
-     //   findViewById(R.id.sign_out_button).setOnClickListener(this);
-   //     findViewById(R.id.maps_button).setOnClickListener(this);
-    //    findViewById(R.id.Db_button).setOnClickListener(this);
-   //     findViewById(R.id.gallery_button).setOnClickListener(this);
-    //    findViewById(R.id.cal_button).setOnClickListener(this);
+        //   findViewById(R.id.sign_out_button).setOnClickListener(this);
+        //     findViewById(R.id.maps_button).setOnClickListener(this);
+        //    findViewById(R.id.Db_button).setOnClickListener(this);
+        //     findViewById(R.id.gallery_button).setOnClickListener(this);
+        //    findViewById(R.id.cal_button).setOnClickListener(this);
 
         Button galleryViewButton = (Button) findViewById(R.id.ViewGalleryButton);
         galleryViewButton.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements
 
             case R.id.Db_button:
                 loadDataBaseView();
-               // loadeventDatabase();
+                // loadeventDatabase();
                 break;
 
             case R.id.gallery_button:

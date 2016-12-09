@@ -43,7 +43,12 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by joelj on 12/1/2016.
+ *
+ * Created by Arjun Sridhar
+ * Modified by Joel Jacob on 12/1/2016.
+ *
+ * Here, we uplaod pics the user selects fromt the phone gallery
+ * The phone callery image picker is also implemented here.
  */
 
 public class PhotoUpload extends AppCompatActivity {
@@ -62,7 +67,7 @@ public class PhotoUpload extends AppCompatActivity {
 
     private static ArrayList<String> urlList = new ArrayList<>();
 
-
+//The buttons to open the camera,view local gallery and database gallery are implemented
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photoupload);
@@ -71,6 +76,7 @@ public class PhotoUpload extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
+        //Open Camera activity
         Button click = (Button) findViewById(R.id.camera);
         click.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +87,7 @@ public class PhotoUpload extends AppCompatActivity {
             }
         });
 
+        //Open phone gallery and allow user to select image.
         Button gallerybutton = (Button) findViewById(R.id.GalleryButton);
         gallerybutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +98,7 @@ public class PhotoUpload extends AppCompatActivity {
             }
         });
 
+        //Open up photo gallery to view online images
         Button galleryViewButton = (Button) findViewById(R.id.ViewGalleryButton);
         galleryViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,62 +116,32 @@ public class PhotoUpload extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance();
         mDatabase = mData.getReference();
 
-/*
-            mDatabase.child("photos").addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    urlList.add((String) dataSnapshot.getValue());
 
-                }
-
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                 //   urlList.add((String) dataSnapshot.getValue());
-                }
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                   // urlList.add((String) dataSnapshot.getValue());
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-*/
     }
 
+
+    //Uplaod images from gallery and obtain the URL to the pictures and store them in the Realtime Database
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             try {
                 Bitmap help1 = MediaStore.Images.Media.getBitmap(getContentResolver(), mfileURI);
-                //   mImageView.setImageBitmap(help1);
+
                 mProgressDialog.setMessage("Uploading.....!");
                 mProgressDialog.show();
                 MediaStore.Images.Media.insertImage(getContentResolver(), help1, "", "");
+
                 StorageReference filepath = mStorageReference.child("photos").child(mfileURI.getLastPathSegment());
+
                 filepath.putFile(mfileURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-
-
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        //  Uri myUri = Uri.parse("file:///storage/emulated/0/Android/data/android.camfirebase/files/Pictures/JPEG_20161130_015619_1360809128.jpg");
+
                         Uri myUri = taskSnapshot.getDownloadUrl();
                         String downloadurl = myUri.toString();
 
                         mDatabase.child("photos").push().setValue(downloadurl);
 
-
-                        //Uri downloadUri=taskSnapshot.getDownloadUrl();
-                        //  Picasso.with(MainActivity.this).load(myUri).into(mImageView);
                         Toast.makeText(PhotoUpload.this, "Upload done", Toast.LENGTH_LONG).show();
                         mProgressDialog.dismiss();
 
@@ -174,6 +152,8 @@ public class PhotoUpload extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
+        //Uplaod photos to database
         if (requestCode == ACTIVITY_SELECT_IMAGE && resultCode == RESULT_OK) {
             mProgressDialog.setMessage("Uploading.....!");
             mProgressDialog.show();
@@ -198,37 +178,6 @@ public class PhotoUpload extends AppCompatActivity {
 
 
 
-/*
-       // My top posts by number of stars
-        mDatabase.addListenerForSingleValueEvent (new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //   Get Post object and use the values to update the UI
-                HashMap<String, String> hmap = (HashMap<String, String> ) dataSnapshot.getValue();
-                Set set = hmap.entrySet();
-                Iterator iterator = set.iterator();
-
-                while(iterator.hasNext()) {
-                    Map.Entry mentry = (Map.Entry) iterator.next();
-                    System.out.print("key is: " + mentry.getKey() + " & Value is: ");
-                    System.out.println(mentry.getValue());
-                    urlList.add((mentry.getValue()).toString());
-                }}
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w("TAG", "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        });
-
-    }
-*/
-    //}
-  //  public static ArrayList<String> getUrlList () {
-//        return urlList;
-  //  }
 }
 
 
