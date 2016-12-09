@@ -1,9 +1,11 @@
 package jj8.firebase_test;
 
 /**
- * Created by joelj on 11/27/2016.
+ * Created by Joel Jacob on 11/27/2016.
+ *
+ * Main login activity, Google sign in integration
  */
-//test5
+
 
 import android.content.Intent;
 import android.net.Uri;
@@ -51,6 +53,9 @@ public class LogInActivity extends AppCompatActivity implements
     private FirebaseAuth.AuthStateListener mAuthListener;
     // [END declare_auth_listener]
 
+
+    // Ask the user for username and password
+    //Check if entered values are what we desire
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +98,7 @@ public class LogInActivity extends AppCompatActivity implements
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         Intent intent = new Intent(LogInActivity.this, ViewActivity.class);
+                                        //Clear activity stack
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
@@ -118,14 +124,14 @@ public class LogInActivity extends AppCompatActivity implements
 
 
         // Configure sign-in to request the user's ID, email address, and basic
-// profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         // Build a GoogleApiClient with access to the Google Sign-In API and the
-// options specified by gso.
+        // options specified by gso.
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)

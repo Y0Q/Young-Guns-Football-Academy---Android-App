@@ -14,6 +14,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+//Created by Joel Jacob
+//Allow a new user account to be created, make sure it abides by rules we set up ,
+//Create the account online using Google Firebase Authentication
+
 public class SignUpActivity extends AppCompatActivity {
 
     protected EditText passwordEditText;
@@ -21,6 +25,8 @@ public class SignUpActivity extends AppCompatActivity {
     protected Button signUpButton;
     private FirebaseAuth mFirebaseAuth;
 
+
+    //We store credentials directly to Firebase using Firebase authentication
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

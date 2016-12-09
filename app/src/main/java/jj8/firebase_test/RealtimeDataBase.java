@@ -1,7 +1,9 @@
 package jj8.firebase_test;
 
 /**
- * Created by joelj on 11/28/2016.
+ * Created by Joel Jacob on 11/28/2016.
+ *
+ * Implemented the App console extra feature
  */
 
 

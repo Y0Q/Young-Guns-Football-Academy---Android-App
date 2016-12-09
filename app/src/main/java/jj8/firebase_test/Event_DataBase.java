@@ -16,8 +16,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 /**
- * Created by joelj on 12/6/2016.
+ *  Created by Joel Jacob on 12/6/2016.
  */
+
+//This class queries the database and updates the event schedule recycler view.
 
 public class Event_DataBase extends AppCompatActivity {
     private DatabaseReference mDatabase;
@@ -27,7 +29,7 @@ public class Event_DataBase extends AppCompatActivity {
 
     private ArrayList<DataSnapshot> lst = new ArrayList<>();;   // store the reference to data in the database
 
-    // the followingn parameters will be used in getter methods
+    // the following parameters will be used in getter methods
     private ArrayList<String> mDate = new ArrayList<>();    // store the date from teh database
     private ArrayList<String> mDay = new ArrayList<>();         // store the day from teh database
     private ArrayList<String> mDescription = new ArrayList<>();     // store the descriptoin from the database
@@ -71,16 +73,6 @@ public class Event_DataBase extends AppCompatActivity {
                     mDescription.add((String)(data.child("description").getValue()));
                 }
 
-
-//                for(char cnt = 0; cnt < lst.size(); cnt++) {
-//                    textView.setText(lst);
-//                }
-
-//                DataSnapshot dsp = (DataSnapshot) dataSnapshot.getChildren();   // get the starting point of the events
-////                String temp = ((String)dataSnapshot.getChildren().("training").child("date").getValue());
-//
-//                String temp = (String) dsp.getKey().toString();
-//                textView.setText(temp);
 
             }
 

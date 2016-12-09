@@ -1,14 +1,12 @@
 package jj8.firebase_test;
 
-/**
- * Created by joelj on 11/30/2016.
- */
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
  * Created by Suleiman19 on 10/22/15.
+ *
+ * Used to display images in photo gallery
  */
 public class ImageModel implements Parcelable {
 

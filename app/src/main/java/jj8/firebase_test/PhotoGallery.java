@@ -1,7 +1,10 @@
 package jj8.firebase_test;
 
 /**
- * Created by joelj on 11/30/2016.
+ * https://github.com/Suleiman19/Gallery
+ * Modified by Joel Jacob on 11/30/2016.
+ *
+ * Implementation of the Photo Gallery that updates in realtime via the Database
  */
 
 
@@ -22,6 +25,7 @@ public class PhotoGallery extends AppCompatActivity {
 
     ArrayList<ImageModel> data = new ArrayList<>();
 
+    //This array contains the URL's of the photos that are to be displayed
     ArrayList<String> IMGS = ViewActivity.getUrlList();
 
     @Override
@@ -41,6 +45,8 @@ public class PhotoGallery extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Call recycler view to display images on a grid
+
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         mRecyclerView.setHasFixedSize(true);
@@ -52,6 +58,7 @@ public class PhotoGallery extends AppCompatActivity {
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this,
                 new RecyclerItemClickListener.OnItemClickListener() {
 
+                    //if the user clicks on an image, it opens up the image in a detailed activity.
                     @Override
                     public void onItemClick(View view, int position) {
 

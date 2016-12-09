@@ -18,6 +18,11 @@ package jj8.firebase_test;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
 
+//Created by Joel Jacob
+//Was used to test all app features previously,
+//Now this activity checks if user has logged in,if they have it will open up ViewActivity
+//which contains the tabbed activity view.
+//
 
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {

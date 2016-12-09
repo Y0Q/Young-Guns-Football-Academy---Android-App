@@ -28,6 +28,8 @@ import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
+
+// Created by Joel Jacob.
 @RuntimePermissions
 public class Camera extends AppCompatActivity implements View.OnClickListener {
 
@@ -47,6 +49,7 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    //Instantiate Camera button and start Camera
     private void initInstances() {
       //  btnTakePhoto = (Button) findViewById(R.id.btnTakePhoto);
         ivPreview = (ImageView) findViewById(R.id.ivPreview);

@@ -19,6 +19,9 @@ import java.util.List;
 
 /**
  * Created by Suleiman19 on 10/22/15.
+ * Modified by Joel Jacob
+ *
+ * Implement the Glide Library and set optimized parameters
  */
 public class GalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

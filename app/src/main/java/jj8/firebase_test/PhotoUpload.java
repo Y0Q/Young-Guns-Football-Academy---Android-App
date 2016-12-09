@@ -43,7 +43,12 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by joelj on 12/1/2016.
+ *
+ * Created by Arjun Sridhar
+ * Modified by Joel Jacob on 12/1/2016.
+ *
+ * Here, we uplaod pics the user selects fromt the phone gallery
+ * The phone callery image picker is also implemented here.
  */
 
 public class PhotoUpload extends AppCompatActivity {
@@ -62,7 +67,7 @@ public class PhotoUpload extends AppCompatActivity {
 
     private static ArrayList<String> urlList = new ArrayList<>();
 
-
+//The buttons to open the camera,view local gallery and database gallery are implemented
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photoupload);
@@ -71,6 +76,7 @@ public class PhotoUpload extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
+        //Open Camera activity
         Button click = (Button) findViewById(R.id.camera);
         click.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +87,7 @@ public class PhotoUpload extends AppCompatActivity {
             }
         });
 
+        //Open phone gallery and allow user to select image.
         Button gallerybutton = (Button) findViewById(R.id.GalleryButton);
         gallerybutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +98,7 @@ public class PhotoUpload extends AppCompatActivity {
             }
         });
 
+        //Open up photo gallery to view online images
         Button galleryViewButton = (Button) findViewById(R.id.ViewGalleryButton);
         galleryViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +119,8 @@ public class PhotoUpload extends AppCompatActivity {
 
     }
 
+
+    //Uplaod images from gallery and obtain the URL to the pictures and store them in the Realtime Database
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
@@ -142,6 +152,8 @@ public class PhotoUpload extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
+        //Uplaod photos to database
         if (requestCode == ACTIVITY_SELECT_IMAGE && resultCode == RESULT_OK) {
             mProgressDialog.setMessage("Uploading.....!");
             mProgressDialog.show();
