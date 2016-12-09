@@ -55,10 +55,6 @@ public class SignUpActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        //Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
-                                        //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
                                         Intent intent = new Intent (SignUpActivity.this, SelectorActivity.class);
                                         startActivity(intent);
                                     } else {

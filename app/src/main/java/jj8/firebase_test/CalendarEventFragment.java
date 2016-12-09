@@ -18,7 +18,7 @@ import java.util.List;
  *              This fragment consists of the recycler view which shows the events in the database stored.
  *              It consists of the event description, its date and the day when the event is held.
  *
- *              It has the container specified in the view pager fragment- ViewTabFragment which has the container
+ *              It has the container specified in the view pager fragment- ViewActivity which has the container
  *              specified for this fragment.
  */
 

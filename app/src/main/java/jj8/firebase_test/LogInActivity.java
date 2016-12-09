@@ -92,7 +92,7 @@ public class LogInActivity extends AppCompatActivity implements
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                                        Intent intent = new Intent(LogInActivity.this, ViewActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
@@ -140,7 +140,8 @@ public class LogInActivity extends AppCompatActivity implements
             FirebaseUser user = authResult.getUser();
             Toast.makeText(this, "Welcome " + user.getEmail(), Toast.LENGTH_SHORT).show();
             // Go back to the main activity
-            startActivity(new Intent(this, MainActivity.class));
+            //startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, ViewActivity.class));
         }
     }
 
@@ -238,7 +239,7 @@ public class LogInActivity extends AppCompatActivity implements
                             Toast.makeText(LogInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(LogInActivity.this, MainActivity.class));
+                            startActivity(new Intent(LogInActivity.this, ViewActivity.class));
                             finish();
                         }
                     }
