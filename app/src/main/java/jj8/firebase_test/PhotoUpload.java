@@ -108,36 +108,7 @@ public class PhotoUpload extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance();
         mDatabase = mData.getReference();
 
-/*
-            mDatabase.child("photos").addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    urlList.add((String) dataSnapshot.getValue());
 
-                }
-
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                 //   urlList.add((String) dataSnapshot.getValue());
-                }
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                   // urlList.add((String) dataSnapshot.getValue());
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-*/
     }
 
     @Override
@@ -145,25 +116,22 @@ public class PhotoUpload extends AppCompatActivity {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             try {
                 Bitmap help1 = MediaStore.Images.Media.getBitmap(getContentResolver(), mfileURI);
-                //   mImageView.setImageBitmap(help1);
+
                 mProgressDialog.setMessage("Uploading.....!");
                 mProgressDialog.show();
                 MediaStore.Images.Media.insertImage(getContentResolver(), help1, "", "");
+
                 StorageReference filepath = mStorageReference.child("photos").child(mfileURI.getLastPathSegment());
+
                 filepath.putFile(mfileURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-
-
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        //  Uri myUri = Uri.parse("file:///storage/emulated/0/Android/data/android.camfirebase/files/Pictures/JPEG_20161130_015619_1360809128.jpg");
+
                         Uri myUri = taskSnapshot.getDownloadUrl();
                         String downloadurl = myUri.toString();
 
                         mDatabase.child("photos").push().setValue(downloadurl);
 
-
-                        //Uri downloadUri=taskSnapshot.getDownloadUrl();
-                        //  Picasso.with(MainActivity.this).load(myUri).into(mImageView);
                         Toast.makeText(PhotoUpload.this, "Upload done", Toast.LENGTH_LONG).show();
                         mProgressDialog.dismiss();
 
@@ -198,37 +166,6 @@ public class PhotoUpload extends AppCompatActivity {
 
 
 
-/*
-       // My top posts by number of stars
-        mDatabase.addListenerForSingleValueEvent (new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //   Get Post object and use the values to update the UI
-                HashMap<String, String> hmap = (HashMap<String, String> ) dataSnapshot.getValue();
-                Set set = hmap.entrySet();
-                Iterator iterator = set.iterator();
-
-                while(iterator.hasNext()) {
-                    Map.Entry mentry = (Map.Entry) iterator.next();
-                    System.out.print("key is: " + mentry.getKey() + " & Value is: ");
-                    System.out.println(mentry.getValue());
-                    urlList.add((mentry.getValue()).toString());
-                }}
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w("TAG", "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        });
-
-    }
-*/
-    //}
-  //  public static ArrayList<String> getUrlList () {
-//        return urlList;
-  //  }
 }
 
 
