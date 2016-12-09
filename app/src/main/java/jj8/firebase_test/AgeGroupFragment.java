@@ -12,7 +12,7 @@ import android.widget.RadioButton;
 
 /**
  * Created by Arjun.
- * Desription: This Fragment shows the information about teh age group
+ * Desription: This Fragment shows the information about the age group
  *              select option. It has five groups ranging from 5-8, 8-12, 12-15, 15-18, 18+
  *
  *              This fragment is inflated by the navigation menu bar and has the container
